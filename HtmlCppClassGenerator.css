@@ -1,0 +1,79 @@
+h1
+{
+   color : #FFFFFF;
+   background-color : #000000;
+   margin : -1em -1em 0em -1em;
+   padding : 1em;
+   text-align : center;
+}
+
+div.cssUnderConstruction
+{
+   /*
+      Original UNDER CONSTRUCTION CSS code by Alex Chan,
+      licensed under CC-BY-4.0, and found here:
+      https://alexwlchan.net/til/2024/under-construction/
+   */
+   margin-left : 25%;
+   margin-right : 25%;
+   padding-left : 2em;
+   padding-right : 2em;
+   font-size : 75%;
+
+   --yellow:       255, 215, 0;
+
+   background: rgba(var(--yellow), 1.0);
+   border-width: 10px;
+   border-style: solid;
+   border-image: repeating-linear-gradient(
+         45deg,
+         black,
+         black              5px,
+         rgb(var(--yellow)) 5px,
+         rgb(var(--yellow)) 10px
+      ) 10;
+}
+
+div.cssUnderConstruction p
+{
+   font-family : Monospace;
+   font-weight : bold;
+   margin-top : 0.25em;
+   margin-bottom : 0.25em;
+}
+
+td.cssOutputExplanation
+, table.cssTable td.cssOutputExplanation
+{
+   color : #FFFFFF;
+   background-color : #282a36;
+}
+
+div.cssQuestion
+, div.cssAnswer
+, div.cssComment
+{
+   margin-top : 1em;
+   margin-bottom : 1em;
+}
+
+div.cssQuestion:first-child
+{
+   margin-top : 0;
+}
+
+div.cssQuestion
+{
+   border : #FF0000 2px solid;
+}
+
+
+div.cssAnswer
+{
+   margin-left : 1.0em;
+}
+
+div.cssComment
+{
+   margin-left : 1.0em;
+}
