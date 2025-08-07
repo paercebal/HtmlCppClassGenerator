@@ -44,7 +44,7 @@
          Namespace:
       </td>
       <td>
-         <input id="ID_input_namespace" type="text" size="30" value="" class="cssWidth100" />
+         <input id="ID_input_namespace" type="text" size="30" value="" class="cssWidth100" validity_function="hccg.validity.is_symbol_namespaces" title="A valid C++ namespace (or multiple namespaces, separated by ::)" />
       </td>
    </tr>
    <tr>
@@ -52,7 +52,7 @@
          Name:
       </td>
       <td>
-         <input id="ID_input_name" type="text" value="" class="cssWidth100" />
+         <input id="ID_input_name" type="text" value="" class="cssWidth100" validity_function="hccg.validity.is_non_empty_symbol_name" title="A valid C++ class name" />
       </td>
    </tr>
    <tr>
@@ -60,7 +60,7 @@
          Type:
       </td>
       <td>
-         <select id="ID_select_type" class="cssWidth100">
+         <select id="ID_select_type" class="cssWidth100" validity_function="hccg.validity.is_non_empty_selection">
             <option value=""></option>
             <option value="VALUE">Value</option>
             <option value="INTERFACE">Interface</option>
