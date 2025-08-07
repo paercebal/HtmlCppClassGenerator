@@ -80,3 +80,41 @@ textarea.cssWidth100
    width : 98%;
 }
 
+input[type=text]
+{
+   background-color : #FFFF80;
+}
+
+input[type=text][htmlx_is_valid=true]
+{
+   color : #0000FF;
+   background-color : #FFFFFF;
+}
+
+
+input[type=text][htmlx_is_valid=false]
+{
+   background-color : #FFC0C0;
+}
+
+select
+{
+   background-color : #FFFF80;
+}
+
+select[htmlx_is_valid=true]
+{
+   color : #0000FF;
+   background-color : #FFFFFF;
+}
+
+
+select[htmlx_is_valid=false]
+{
+   background-color : #FFC0C0;
+}
+
+summary
+{
+   cursor : help;
+}

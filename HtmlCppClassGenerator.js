@@ -1,16 +1,50 @@
 const hccg = {};
 hccg.elements_enricher = {};
+hccg.validity = {};
+
+hccg.validity.is_symbol_name = (p_text) =>
+   {
+      if(p_text.length == 0) return null;
+      return jsx.regex.is_exactly(p_text, "[A-Za-z](?:[A-Za-z0-9_])*");
+   }
+
+hccg.validity.is_non_empty_symbol_name = (p_text) =>
+   {
+      if(p_text.length == 0) return false;
+      return hccg.validity.is_symbol_name(p_text);
+   }
+
+hccg.validity.is_symbol_namespaces = (p_text) =>
+   {
+      if(p_text.length == 0) return null;
+      let a = p_text.split("::");
+      for(let s of a)
+      {
+         if(! hccg.validity.is_symbol_name(s))
+         {
+            return false;
+         }
+      }
+      
+      return true;
+   };
+
+hccg.validity.is_non_empty_selection = (p_text) =>
+   {
+      return (p_text.length != 0);
+   }
+
 
 hccg.elements_enricher.on_select_change = (p_select, p_event) =>
    {
       let o = p_select;
-      jsx.log("select[", o.id, "] changed");
-      jsx.log(" - index: ", o.jsx_get_selected_index());
-      jsx.log(" - value: \"", o.jsx_get_value(), "\"");
+      //jsx.log("select[", o.id, "] changed");
+      //jsx.log(" - index: ", o.jsx_get_selected_index());
+      //jsx.log(" - value: \"", o.jsx_get_value(), "\"");
       
       if(o.id === "ID_select_type2")
       {
-         jsx.id("ID_select_type").jsx_set_value(o.jsx_get_value());
+         //jsx.id("ID_select_type").jsx_set_value(o.jsx_get_value());
       }
       
       //hccg.update_output();
@@ -20,8 +54,8 @@ hccg.elements_enricher.on_select_change = (p_select, p_event) =>
 hccg.elements_enricher.on_input_change = (p_input, p_event) =>
    {
       let o = p_input;
-      jsx.log("input[", o.id, "] changed");
-      jsx.log(" - value: \"", o.jsx_get_value(), "\"");
+      //jsx.log("input[", o.id, "] changed");
+      //jsx.log(" - value: \"", o.jsx_get_value(), "\"");
 
       //hccg.update_output();
       hccg.g_to_be_updated = true;
@@ -37,31 +71,20 @@ hccg.update_output = () =>
       
       hccg.g_to_be_updated = null;
       
-      const namespace = jsx.id("ID_input_namespace").jsx_get_value();
-      const name = jsx.id("ID_input_name").jsx_get_value();
-      
-      if(name.length == 0)
-      {
-         jsx.id("ID_select_type").jsx_set_value("");
-         jsx.id("ID_select_type").disabled = true;
-      }
-      else
-      {
-         jsx.id("ID_select_type").disabled = false;
-      }
-      
+      const namespace = jsx.id("ID_input_namespace").jsx_get_value_if_valid();
+      const name = jsx.id("ID_input_name").jsx_get_value_if_valid();
       const type = jsx.id("ID_select_type").jsx_get_value();
       
       {
          let a = [];
          
-         if(namespace.length)
+         if(namespace != null)
          {
             a.push("namespace ", namespace, " {\n");
             a.push("\n");
          }
          
-         if(name.length)
+         if(name != null)
          {
             if(type == "VALUE")
             {
@@ -101,7 +124,7 @@ hccg.update_output = () =>
             }
          }
          
-         if(namespace.length)
+         if(namespace != null)
          {
             a.push("} // namespace ", namespace, "\n");
             a.push("\n");
@@ -123,20 +146,23 @@ hccg.update_output = () =>
          a.push(" (and optionally a namespace name)");
          a.push("</div>");
          
-         if(name.length || namespace.length)
+         if(name != null || namespace != null)
          {
             a.push("<div class=\"cssAnswer\">");
             a.push("<ul>");
-            if(namespace.length)
+            if(namespace != null)
             {
                a.push("<li>Namespace: [", namespace, "]");
             }
-            a.push("<li>Class Name: [", name, "]");
+            if(name != null)
+            {
+               a.push("<li>Class Name: [", name, "]");
+            }
             a.push("</ul>");
             a.push("</div>");
          }
          
-         if(name.length)
+         if(name != null)
          {
             a.push("<div class=\"cssQuestion\">");
             a.push("Please choose class type");
@@ -265,7 +291,7 @@ hccg.update_output = () =>
          hccg.g_to_be_updated = false;
       }
       
-      jsx.log("Yo: " + hccg.g_to_be_updated);
+      //jsx.log("Yo: " + hccg.g_to_be_updated);
    }
 
 
