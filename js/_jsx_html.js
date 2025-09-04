@@ -92,7 +92,7 @@ class jsx_html
    static check_validity(p_htmlx_element)
    {
       let is_valid = jsx_html.is_valid(p_htmlx_element);
-      jsx.log("is_validity: ", is_valid);
+      //jsx.log("is_validity: ", is_valid);
       
       if(is_valid == null)
       {
