@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta charset="utf-8" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<link rel="icon" type="image/webp" href="../img/favicon.webp" />
+<title>HTML C++ Class Generator</title>
+<script src="../js/__all.js"></script>
+</head>
+<body onload="on_page_load()">
+
+<h1>HTML C++ Class Generator&#160;<sup>0.1</sup></h1>
+
+
+<div class="cssUnderConstruction">
+   <p>
+      This tool is under construction.
+   </p>
+   <p>
+      Please do not use generated code in
+      production without having it thoroughly
+      reviewed.
+   </p>
+   <p>
+      Also, <a href="LICENSE">Mozilla Public License Version 2.0</a>.
+   </p>
+</div>
+
+<textarea id="ID_logs" rows="10" class="cssWidth100"></textarea>
+
+<div>
+
+<table width="100%">
+   <tr>
+      <th>
+      </th>
+      <th>
+      </th>
+   </tr>
+   <tr>
+      <td>
+         Namespace:
+      </td>
+      <td>
+         <input id="ID_input_namespace" type="text" size="30" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_symbol_namespaces" jsx_on_change="hccg.on_change" title="A valid C++ namespace (or multiple namespaces, separated by ::)" />
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Name:
+      </td>
+      <td>
+         <input id="ID_input_name" type="text" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_symbol_name" jsx_on_change="hccg.on_change" title="A valid C++ class name" />
+      </td>
+   </tr>
+   <tr>
+      <td>
+         Type:
+      </td>
+      <td>
+         <select id="ID_select_type" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_selection" jsx_on_change="hccg.on_change">
+            <option value=""></option>
+            <option value="VALUE">Value</option>
+            <option value="INTERFACE">Interface</option>
+         </select>
+      </td>
+   </tr>
+</table>
+
+</div>
+
+<style>
+</style>
+
+<table width="100%">
+<tr>
+<td width="50%" valign="top">
+
+<table class="cssTable" width="100%">
+   <tr>
+      <th width="100%">Header File</th>
+   </tr>
+   <tr>
+      <td>
+         <textarea id="ID_output_header" cols="60" rows="20" class="cssWidth100"></textarea>
+      </td>
+   </tr>
+   <tr>
+      <th>Source File</th>
+   </tr>
+   <tr>
+      <td>
+         <textarea id="ID_output_source" cols="60" rows="20" class="cssWidth100"></textarea>
+      </td>
+   </tr>
+</table>
+
+</td>
+<td width="50%" valign="top" class="cssOutputExplanation">
+
+<table class="cssTable" width="100%">
+   <tr>
+      <th valign="top" width="100%">Explanation</th>
+   </tr>
+   <tr>
+      <td valign="top" class="cssOutputExplanation">
+         <div id="ID_output_explanation" class="cssWidth100"></div>
+      </td>
+   </tr>
+</table>
+
+
+</td>
+</tr>
+</table>
+
+
+<script>
+/////////////////////////////////////////////////////
+//
+// on_page_load
+//
+/////////////////////////////////////////////////////
+
+function on_page_load()
+{
+}
+</script>
+
+</body>
+</html>

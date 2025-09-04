@@ -5,7 +5,7 @@ hccg.validity = {};
 hccg.validity.is_symbol_name = (p_text) =>
    {
       if(p_text.length == 0) return null;
-      return jsx.regex.is_exactly(p_text, "[A-Za-z](?:[A-Za-z0-9_])*");
+      return jsx_regex.is_exactly(p_text, "[A-Za-z](?:[A-Za-z0-9_])*");
    }
 
 hccg.validity.is_non_empty_symbol_name = (p_text) =>
@@ -62,6 +62,11 @@ hccg.elements_enricher.on_input_change = (p_input, p_event) =>
    }
 
 hccg.g_to_be_updated = true;
+
+hccg.on_change = (p_element, p_event) =>
+   {
+      hccg.g_to_be_updated = true;
+   };
 
 hccg.update_output = () =>
    {
@@ -295,10 +300,10 @@ hccg.update_output = () =>
    }
 
 
-window.addEventListener("load",
+jsx.on_load_execute(
       (p_event) =>
       {
-         jsx.html.enrich_elements(p_event, hccg.elements_enricher);
+         //jsx_html.enrich_elements(p_event, hccg.elements_enricher);
          jsx.set_timer_task(hccg.update_output, 1250);
       }
    );
