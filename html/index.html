@@ -40,27 +40,46 @@
       </th>
    </tr>
    <tr>
-      <td>
-         Namespace:
+      <td class="cssRight">
+         Code implementation:
       </td>
       <td>
-         <input id="ID_input_namespace" type="text" size="30" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_symbol_namespaces" jsx_on_change="hccg.on_change" title="A valid C++ namespace (or multiple namespaces, separated by ::)" />
-      </td>
-   </tr>
-   <tr>
-      <td>
-         Name:
-      </td>
-      <td>
-         <input id="ID_input_name" type="text" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_symbol_name" jsx_on_change="hccg.on_change" title="A valid C++ class name" />
+         <select id="ID_select_code_implementation" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_selection" jsx_on_change="hccg.on_change">
+            <option value="NON_INLINED">Non-inlined</option>
+            <option value="INLINED">Inlined</option>
+         </select>
       </td>
    </tr>
    <tr>
-      <td>
-         Type:
+      <td class="cssRight">
+         Import/export macro:
       </td>
       <td>
-         <select id="ID_select_type" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_selection" jsx_on_change="hccg.on_change">
+         <input id="ID_input_import_export_macro" type="text" size="30" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_macro_name" jsx_on_change="hccg.on_change" title="If relevant, an (ideally uppercase) C++ macro name that will export the symbol from the DLL/shared object" placeholder="not exported" />
+      </td>
+   </tr>
+   <tr>
+      <td class="cssRight">
+         Namespace name:
+      </td>
+      <td>
+         <input id="ID_input_namespace_name" type="text" size="30" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_symbol_namespaces" jsx_on_change="hccg.on_change" title="A valid C++ namespace (or multiple namespaces, separated by ::)" placeholder="none" />
+      </td>
+   </tr>
+   <tr>
+      <td class="cssRight">
+         Class name:
+      </td>
+      <td>
+         <input id="ID_input_class_name" type="text" value="" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_symbol_name" jsx_on_change="hccg.on_change" title="A valid C++ class name" />
+      </td>
+   </tr>
+   <tr>
+      <td class="cssRight">
+         Class type:
+      </td>
+      <td>
+         <select id="ID_select_class_type" class="cssWidth100" jsx_validity_function="hccg.validity.is_non_empty_selection" jsx_on_change="hccg.on_change">
             <option value=""></option>
             <option value="VALUE">Value</option>
             <option value="INTERFACE">Interface</option>

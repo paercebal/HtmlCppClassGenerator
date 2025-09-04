@@ -8,6 +8,12 @@ hccg.validity.is_symbol_name = (p_text) =>
       return jsx_regex.is_exactly(p_text, "[A-Za-z](?:[A-Za-z0-9_])*");
    }
 
+hccg.validity.is_macro_name = (p_text) =>
+   {
+      if(p_text.length == 0) return null;
+      return jsx_regex.is_exactly(p_text, "[A-Z](?:[A-Z0-9_])*");
+   }
+
 hccg.validity.is_non_empty_symbol_name = (p_text) =>
    {
       if(p_text.length == 0) return false;
@@ -44,7 +50,7 @@ hccg.elements_enricher.on_select_change = (p_select, p_event) =>
       
       if(o.id === "ID_select_type2")
       {
-         //jsx.id("ID_select_type").jsx_set_value(o.jsx_get_value());
+         //jsx.id("ID_select_class_type").jsx_set_value(o.jsx_get_value());
       }
       
       //hccg.update_output();
@@ -78,9 +84,13 @@ hccg.update_output = () =>
       
       const state = new cpp_expertise.state();
 
-      state.m_namespace = jsx.id("ID_input_namespace").jsx_get_value_if_valid();
-      state.m_class_name = jsx.id("ID_input_name").jsx_get_value_if_valid();
-      state.m_class_type = jsx.id("ID_select_type").jsx_get_value_if_valid();
+      state.m_is_inlined = jsx.id("ID_select_code_implementation").jsx_get_value_if_valid() == cpp_expertise.k.CODE_IMPLEMENTATION_INLINED;
+      state.m_import_export_macro = jsx.id("ID_input_import_export_macro").jsx_get_value_if_not_invalid();
+
+      state.m_namespace = jsx.id("ID_input_namespace_name").jsx_get_value_if_valid();
+      state.m_class_name = jsx.id("ID_input_class_name").jsx_get_value_if_valid();
+      state.m_class_type = jsx.id("ID_select_class_type").jsx_get_value_if_valid();
+      
       
       jsx.id("ID_output_header").value = state.generate_header();
       jsx.id("ID_output_source").value = state.generate_source();

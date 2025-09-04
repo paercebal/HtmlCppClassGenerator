@@ -138,6 +138,18 @@ class jsx_html
             return null;
          };
 
+      p_input.jsx_get_value_if_not_invalid = () =>
+         {
+            let v = jsx_html.is_valid(p_input);
+            
+            if(v === null || v)
+            {
+               return p_input.value;
+            }
+            
+            return null;
+         };
+
       p_input.addEventListener("change",
             (p_event) =>
             {
