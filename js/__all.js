@@ -21,6 +21,8 @@ jsxbootstrap.include_all = function()
    jsxbootstrap.include_script("../js/_jsx_test.js");
 
    jsxbootstrap.include_script("../js/cpp_expertise.js");
+   jsxbootstrap.include_script("../js/cpp_expertise.coder.js");
+   jsxbootstrap.include_script("../js/cpp_expertise.explainer.js");
    jsxbootstrap.include_script("../js/HtmlCppClassGenerator.js");
 
    // Add your JS scripts here

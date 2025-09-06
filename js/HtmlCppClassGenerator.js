@@ -91,10 +91,11 @@ hccg.update_output = () =>
       state.m_class_name = jsx.id("ID_input_class_name").jsx_get_value_if_valid();
       state.m_class_type = jsx.id("ID_select_class_type").jsx_get_value_if_valid();
       
-      
-      jsx.id("ID_output_header").value = state.generate_header();
-      jsx.id("ID_output_source").value = state.generate_source();
-      jsx.id("ID_output_explanation").innerHTML = state.generate_explanation();
+      const coder = new cpp_expertise.coder();
+      const explainer = new cpp_expertise.explainer();
+      jsx.id("ID_output_header").value = coder.generate_header(state);
+      jsx.id("ID_output_source").value = coder.generate_source(state);
+      jsx.id("ID_output_explanation").innerHTML = explainer.generate_explanation(state);
 
       if(hccg.g_to_be_updated === null)
       {
